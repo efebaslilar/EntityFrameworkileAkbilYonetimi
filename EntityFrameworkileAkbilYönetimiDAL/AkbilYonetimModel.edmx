@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AkbilYonetimDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Akbiller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KayitTarihi" Type="datetime" Nullable="false" />
+          <Property Name="AkbilSahibi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SeriNumarasi" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="GuncellenmeTarihi" Type="datetime" />
+          <Property Name="AktifMi" Type="bit" Nullable="false" />
+          <Property Name="Bakiye" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Talimatlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AkbilId" Type="int" Nullable="false" />
+          <Property Name="OlusturulmaTarihi" Type="datetime" Nullable="false" />
+          <Property Name="YuklenecekTutar" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TalimatYuklendiMi" Type="bit" Nullable="false" />
+          <Property Name="TalimatinYuklendigiTarih" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Talimatla__Talim__2C3393D0">
+          <End Role="Akbiller" Type="Self.Akbiller" Multiplicity="1" />
+          <End Role="Talimatlar" Type="Self.Talimatlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akbiller">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talimatlar">
+              <PropertyRef Name="AkbilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AkbilYonetimDBModelStoreContainer">
+          <EntitySet Name="Akbiller" EntityType="Self.Akbiller" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Talimatlar" EntityType="Self.Talimatlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Talimatla__Talim__2C3393D0" Association="Self.FK__Talimatla__Talim__2C3393D0">
+            <End Role="Akbiller" EntitySet="Akbiller" />
+            <End Role="Talimatlar" EntitySet="Talimatlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AkbilYonetimDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Akbiller">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KayitTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AkbilSahibi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SeriNumarasi" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="GuncellenmeTarihi" Type="DateTime" Precision="3" />
+          <Property Name="AktifMi" Type="Boolean" Nullable="false" />
+          <Property Name="Bakiye" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Talimatlar" Relationship="Self.FK__Talimatla__Talim__2C3393D0" FromRole="Akbiller" ToRole="Talimatlar" />
+        </EntityType>
+        <EntityType Name="Talimatlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AkbilId" Type="Int32" Nullable="false" />
+          <Property Name="OlusturulmaTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="YuklenecekTutar" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="TalimatYuklendiMi" Type="Boolean" Nullable="false" />
+          <Property Name="TalimatinYuklendigiTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Akbiller" Relationship="Self.FK__Talimatla__Talim__2C3393D0" FromRole="Talimatlar" ToRole="Akbiller" />
+        </EntityType>
+        <Association Name="FK__Talimatla__Talim__2C3393D0">
+          <End Role="Akbiller" Type="Self.Akbiller" Multiplicity="1" />
+          <End Role="Talimatlar" Type="Self.Talimatlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Akbiller">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Talimatlar">
+              <PropertyRef Name="AkbilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AkbilYonetimDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Akbiller" EntityType="Self.Akbiller" />
+          <EntitySet Name="Talimatlar" EntityType="Self.Talimatlar" />
+          <AssociationSet Name="FK__Talimatla__Talim__2C3393D0" Association="Self.FK__Talimatla__Talim__2C3393D0">
+            <End Role="Akbiller" EntitySet="Akbiller" />
+            <End Role="Talimatlar" EntitySet="Talimatlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AkbilYonetimDBModelStoreContainer" CdmEntityContainer="AkbilYonetimDBEntities">
+          <EntitySetMapping Name="Akbiller">
+            <EntityTypeMapping TypeName="AkbilYonetimDBModel.Akbiller">
+              <MappingFragment StoreEntitySet="Akbiller">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="AkbilSahibi" ColumnName="AkbilSahibi" />
+                <ScalarProperty Name="SeriNumarasi" ColumnName="SeriNumarasi" />
+                <ScalarProperty Name="GuncellenmeTarihi" ColumnName="GuncellenmeTarihi" />
+                <ScalarProperty Name="AktifMi" ColumnName="AktifMi" />
+                <ScalarProperty Name="Bakiye" ColumnName="Bakiye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Talimatlar">
+            <EntityTypeMapping TypeName="AkbilYonetimDBModel.Talimatlar">
+              <MappingFragment StoreEntitySet="Talimatlar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AkbilId" ColumnName="AkbilId" />
+                <ScalarProperty Name="OlusturulmaTarihi" ColumnName="OlusturulmaTarihi" />
+                <ScalarProperty Name="YuklenecekTutar" ColumnName="YuklenecekTutar" />
+                <ScalarProperty Name="TalimatYuklendiMi" ColumnName="TalimatYuklendiMi" />
+                <ScalarProperty Name="TalimatinYuklendigiTarih" ColumnName="TalimatinYuklendigiTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

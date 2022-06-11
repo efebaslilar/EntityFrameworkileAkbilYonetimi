@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkileAkbilYonetimiWinFormUI", "EntityFrameworkileAkbilYönetimiWinFormUI\EntityFrameworkileAkbilYonetimiWinFormUI.csproj", "{DB297DFD-4E03-4D76-A937-38C55931BBBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkileAkbilYonetimiDAL", "EntityFrameworkileAkbilYönetimiDAL\EntityFrameworkileAkbilYonetimiDAL.csproj", "{DB51A913-6AF9-4A51-8C64-DF1AE5C6D961}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB297DFD-4E03-4D76-A937-38C55931BBBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB297DFD-4E03-4D76-A937-38C55931BBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB297DFD-4E03-4D76-A937-38C55931BBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB297DFD-4E03-4D76-A937-38C55931BBBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB51A913-6AF9-4A51-8C64-DF1AE5C6D961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB51A913-6AF9-4A51-8C64-DF1AE5C6D961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB51A913-6AF9-4A51-8C64-DF1AE5C6D961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB51A913-6AF9-4A51-8C64-DF1AE5C6D961}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD65CABD-4183-40B8-9D69-5EAC48EEC559}
+	EndGlobalSection
+EndGlobal
