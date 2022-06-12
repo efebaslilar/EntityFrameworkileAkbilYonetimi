@@ -46,7 +46,6 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
             this.txtAdSoyad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageAkbilEkle = new System.Windows.Forms.TabPage();
-            this.silToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStripAkbilSil = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.dataGridViewAkbilList = new System.Windows.Forms.DataGridView();
             this.tabControlAkbiller = new System.Windows.Forms.TabControl();
@@ -54,6 +53,8 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
             this.talimatlarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anaSayfaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripAkbiller = new System.Windows.Forms.MenuStrip();
+            this.hardDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.softDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBoxAkbilBilgileri.SuspendLayout();
             this.tabPageAkbilGuncelle.SuspendLayout();
@@ -72,6 +73,7 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
             this.comboBoxAkbilGuncelle.Name = "comboBoxAkbilGuncelle";
             this.comboBoxAkbilGuncelle.Size = new System.Drawing.Size(672, 21);
             this.comboBoxAkbilGuncelle.TabIndex = 0;
+            this.comboBoxAkbilGuncelle.SelectedIndexChanged += new System.EventHandler(this.comboBoxAkbilGuncelle_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -100,6 +102,7 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
             this.btnAkbikGuncelle.TabIndex = 4;
             this.btnAkbikGuncelle.Text = "GÜNCELLE";
             this.btnAkbikGuncelle.UseVisualStyleBackColor = true;
+            this.btnAkbikGuncelle.Click += new System.EventHandler(this.btnAkbikGuncelle_Click);
             // 
             // txtGuncelleSeriNo
             // 
@@ -218,19 +221,14 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
             this.tabPageAkbilEkle.Text = "Yeni Akbil Ekle";
             this.tabPageAkbilEkle.UseVisualStyleBackColor = true;
             // 
-            // silToolStripMenuItem
-            // 
-            this.silToolStripMenuItem.Name = "silToolStripMenuItem";
-            this.silToolStripMenuItem.Size = new System.Drawing.Size(86, 22);
-            this.silToolStripMenuItem.Text = "Sil";
-            // 
             // contextMenuStripAkbilSil
             // 
             this.contextMenuStripAkbilSil.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStripAkbilSil.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.silToolStripMenuItem});
+            this.hardDeleteToolStripMenuItem,
+            this.softDeleteToolStripMenuItem});
             this.contextMenuStripAkbilSil.Name = "contextMenuStripAkbilSil";
-            this.contextMenuStripAkbilSil.Size = new System.Drawing.Size(87, 26);
+            this.contextMenuStripAkbilSil.Size = new System.Drawing.Size(181, 70);
             // 
             // dataGridViewAkbilList
             // 
@@ -297,6 +295,20 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
             this.menuStripAkbiller.TabIndex = 2;
             this.menuStripAkbiller.Text = "menuStrip1";
             // 
+            // hardDeleteToolStripMenuItem
+            // 
+            this.hardDeleteToolStripMenuItem.Name = "hardDeleteToolStripMenuItem";
+            this.hardDeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hardDeleteToolStripMenuItem.Text = "Hard Delete";
+            this.hardDeleteToolStripMenuItem.Click += new System.EventHandler(this.hardDeleteToolStripMenuItem_Click);
+            // 
+            // softDeleteToolStripMenuItem
+            // 
+            this.softDeleteToolStripMenuItem.Name = "softDeleteToolStripMenuItem";
+            this.softDeleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.softDeleteToolStripMenuItem.Text = "Soft Delete";
+            this.softDeleteToolStripMenuItem.Click += new System.EventHandler(this.softDeleteToolStripMenuItem_Click);
+            // 
             // FrmAkbiller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,6 +318,7 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
             this.Controls.Add(this.menuStripAkbiller);
             this.Name = "FrmAkbiller";
             this.Text = "FrmAkbiller";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAkbiller_FormClosed);
             this.Load += new System.EventHandler(this.FrmAkbiller_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -343,7 +356,6 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
         private System.Windows.Forms.TextBox txtAdSoyad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPageAkbilEkle;
-        private System.Windows.Forms.ToolStripMenuItem silToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAkbilSil;
         private System.Windows.Forms.DataGridView dataGridViewAkbilList;
         private System.Windows.Forms.TabControl tabControlAkbiller;
@@ -351,5 +363,7 @@ namespace EntityFrameworkileAkbilYönetimiWinFormUI
         private System.Windows.Forms.ToolStripMenuItem talimatlarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem anaSayfaToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStripAkbiller;
+        private System.Windows.Forms.ToolStripMenuItem hardDeleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem softDeleteToolStripMenuItem;
     }
 }
